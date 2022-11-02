@@ -32,7 +32,7 @@ public class MergekSortedLists_Hard {
     public static void main(String[] args) {
         System.out.println("l1");
 
-        ListNode root1=new ListNode(10);
+        ListNode root1=new ListNode(1000);
         ListNode n11=new ListNode(20);
         head1=root1;
         root1.next=n11;
@@ -70,10 +70,34 @@ public class MergekSortedLists_Hard {
     }
 
     public static ListNode mergeKLists(ListNode[] lists) {
-        HashMap<Integer,Integer> map = new HashMap<>();
+//        HashMap<Integer,Integer> map = new HashMap<>();
+//        for (ListNode node:lists) {
+//            while (node!=null){
+//
+//                int count=1;
+//                if(map.containsKey(node.val)){
+//                    count=map.get(node.val)+1;
+//                }
+//                map.put(node.val, count);
+//                node=node.next;
+//            }
+//        }
+//
+//        lastPostion=result;
+//        // create a TreeMap
+//        TreeMap<Integer, Integer> tm = new TreeMap<>(map);
+//        for (int key:tm.keySet()) {
+//            int times=tm.get(key);
+//            for (int i = 1; i <=times ; i++) {
+//                lastPostion= addtoResult(key);
+//            }
+//
+//        }
+
+        //or
+        TreeMap<Integer,Integer> map = new TreeMap<>();
         for (ListNode node:lists) {
             while (node!=null){
-
                 int count=1;
                 if(map.containsKey(node.val)){
                     count=map.get(node.val)+1;
@@ -82,12 +106,8 @@ public class MergekSortedLists_Hard {
                 node=node.next;
             }
         }
-
-        lastPostion=result;
-        // create a TreeMap
-        TreeMap<Integer, Integer> tm = new TreeMap<>(map);
-        for (int key:tm.keySet()) {
-            int times=tm.get(key);
+            for (int key:map.keySet()) {
+            int times=map.get(key);
             for (int i = 1; i <=times ; i++) {
                 lastPostion= addtoResult(key);
             }

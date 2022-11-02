@@ -44,7 +44,7 @@ public class ReverseNodesink_Group {
 
         long srart1=System.nanoTime();
 
-        reverseKGroup(head1,3);
+        reverseKGroup(head1,2);
         long end1=System.nanoTime();
         long oldMethodTime=(end1-srart1)/100;
 
@@ -113,16 +113,23 @@ public class ReverseNodesink_Group {
              //add array values to result
              if(tempArr[k-1]!=-1){
                  //add from end to last added start
-                 for (int arrVal:tempArr) {
-                     addtoResult(arrVal);
+
+                 for (int i = 0; i < tempArr.length; i++) {
+                     addtoResult(tempArr[i]);
+                     tempArr[i]=-1;
                  }
+
+//                 for (int arrVal:tempArr) {
+//                     addtoResult(arrVal);
+//                 }
+
              }
 
              lastIndexForSingleArr=k-1;
-             restArr(tempArr);
+//             restArr(tempArr);
              continue;
          }else if(head.next==null&&lastIndexForSingleArr!=0&&tempArr[k-1]==-1){
-             restArr(tempArr);
+//             restArr(tempArr);
              lastIndexForSingleArr=k-1;
          }
 
@@ -136,9 +143,13 @@ public class ReverseNodesink_Group {
             addLastArrValues(tempArr,lastIndexForSingleArr);
         }
         else if(tempArr[0]!=-1){
-            for (int arrVal:tempArr) {
-                addtoResult(arrVal);
+            for (int i = 0; i < tempArr.length; i++) {
+                addtoResult(tempArr[i]);
+                tempArr[i]=-1;
             }
+//            for (int arrVal:tempArr) {
+//                addtoResult(arrVal);
+//            }
         }
         return result;
     }
